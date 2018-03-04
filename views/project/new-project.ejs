@@ -1,0 +1,55 @@
+<html lang="en" ng-app="app">
+
+<head>
+
+    <% include ./partials/head %>
+
+</head>
+
+<body>
+
+    <% include ./partials/sidebar %>
+    <div id="main">
+    
+        <div class="w3-teal">
+            <% include ./partials/header %>
+        
+            <div class="container">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <form id="registerForm" class="form-horizontal" role="form" method="post" action="/project" data-parsley-trigger="keyup" data-parsley-validate>
+        
+                            <div class="form-group">
+                                <label for="number" class="col-md-4 control-label">Broj naloga:</label>
+                                <div class="col-md-8">
+                                    <input id="number" type="text" class="form-control" name="number" placeholder="Broj naloga" data-parsley-trigger="change" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="title" class="col-md-4 control-label">Naziv projekta:</label>
+                                <div class="col-md-8">
+                                    <input id="title" type="text" class="form-control" name="title" placeholder="Naziv projekta" required />
+                                </div>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button type="submit" class="btn btn-primary">Dodaj projekat</button>
+                                </div>
+                            </div>
+        
+                        </form>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>

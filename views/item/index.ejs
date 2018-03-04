@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+</head>
+
+<body>
+    <% var user = user %>
+    
+    <% include ./partials/sidebar %>
+    <div id="main">
+    
+        <div class="w3-teal">
+            <% include ./partials/header %>
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="/item" class="btn btn-success btn-new-qnn">Dodaj novi artikal</a>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table stripe" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width: 32px;">Id</th>
+                                    <th scope="col">Naziv</th>
+                                    <th scope="col">Jedinica mjere</th>
+                                    <th scope="col">Nabavba cijena</th>
+                                    <th scope="col" style="width: 32px;">Izmjeni</th>
+                                    <th scope="col" style="width: 32px;">Obriši</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% items.forEach(function(item){ %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= item.id %>
+                                        </th>
+                                        <td>
+                                            <%= item.title %>
+                                        </td>
+                                        <td>
+                                            <%= item.unitOfMeasure %>
+                                        </td>
+                                        <td>
+                                            <%= item.purchasePrice %>
+                                        </td>
+                                        <td>
+                                            <a href="/item/<%= item.id %>">
+                                                <i class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Izmjeni"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/item/<%= item.id %>" role="button" data-role="delete" data-delete-parent="tr">
+                                                <i class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Obriši"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% })%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>

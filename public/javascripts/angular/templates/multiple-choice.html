@@ -1,0 +1,12 @@
+<div class="form-group" ng-class="{'selected': !ngModel.dbId}" data-id="{{ngModel.id}}">
+    <div class="col-md-12">
+        <i class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Remove" ng-click="removeElement(ngModel.id)"></i>
+        <label class="control-label">{{ngModel.text}}</label>
+    </div>
+    <div class="col-md-12">
+        <div class="checkbox-field" ng-repeat="option in ngModel.options track by $index">
+            <input id="multi-{{ngModel.id}}-{{$index}}" type="checkbox" class="form-control checkbox" name="multi-{{ngModel.id}}" ng-model="values[$index]" />
+            <label for="multi-{{ngModel.id}}-{{$index}}">{{option}}</label>
+        </div>
+    </div>
+</div>

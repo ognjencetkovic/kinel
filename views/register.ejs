@@ -1,0 +1,93 @@
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <div class="panel panel-primary panel-register">
+
+                    <div class="panel-heading">
+                        <div class="panel-title">Register</div>
+                    </div>
+
+                    <div class="panel-body">
+                        <form id="registerForm" class="form-horizontal" role="form" method="post" action="/register" data-parsley-trigger="keyup" data-parsley-validate>
+                            
+                            <% if (typeof message == 'string' && message.length) { %>
+                                <div class="alert alert-danger col-sm-12">
+                                    <%= message %>
+                                </div>
+                            <% } %>
+
+                            <div class="form-group">
+                                <label for="firstName" class="col-md-4 control-label">First name</label>
+                                <div class="col-md-8">
+                                    <input id="firstName" type="text" class="form-control" name="firstName" placeholder="First Name" data-parsley-trigger="change" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="col-md-4 control-label">Last name</label>
+                                <div class="col-md-8">
+                                    <input id="lastName" type="text" class="form-control" name="lastName" placeholder="Last Name" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">Email</label>
+                                <div class="col-md-8">
+                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <div class="col-md-8">
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password"                     
+                                        pattern="/^[A-Za-z](?=.*\d)[a-zA-Z\d]{7,}$/"
+                                        data-parsley-pattern-message="Password is too short! Must be min 8 characters. First Character should be letter and password must contain at least one digit."
+                                        required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword" class="col-md-4 control-label">Confirm password</label>
+                                <div class="col-md-8">
+                                    <input id="confirmPassword" type="password" class="form-control" name="confirmPassword" placeholder="Confirm password"
+                                    data-parsley-equalto="#password" 
+                                    data-parsley-equalto-message="Passwords do not match."
+                                     required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div class="line-top">
+                                        Already registered!
+                                        <a href="/login">
+                                            Login here
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

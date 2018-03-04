@@ -1,0 +1,259 @@
+<html lang="en" ng-app="app">
+
+<head>
+
+    <% include ./partials/head %>
+
+</head>
+
+<body>
+
+    <% include ./partials/sidebar %>
+    <div id="main">
+    
+        <div class="w3-teal">
+            <% include ./partials/header %>
+        
+            <div class="container">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <form id="registerForm" class="form-horizontal" role="form" method="post" action="/project/<%= project.id %>" data-parsley-trigger="keyup"
+                            data-parsley-validate>
+        
+                            <div class="form-group">
+                                <label for="number" class="col-md-4 control-label">Broj naloga:</label>
+                                <div class="col-md-8">
+                                    <input id="number" type="text" class="form-control" name="number" placeholder="Broj naloga" data-parsley-trigger="change"
+                                        value="<%= project.number %>" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="title" class="col-md-4 control-label">Naziv projekta:</label>
+                                <div class="col-md-8">
+                                    <input id="title" type="text" class="form-control" name="title" placeholder="Naziv projekta" value="<%= project.title %>"
+                                        required />
+                                </div>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button type="submit" class="btn btn-primary">Snimi izmjene</button>
+                                </div>
+                            </div>
+        
+                        </form>
+        
+                        <div class="col-md-12 line-divider"></div>
+        
+                        <div class="col-md-12">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#employeeModal">Dodaj radnika</button>
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#itemModal">Dodaj artikal</button>
+                        </div>
+        
+                        <div class="col-md-12 line-divider"></div>
+        
+                        <h3>Radnici</h3>
+                        <table class="table stripe" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Radnik</th>
+                                    <th scope="col">Broj sati</th>
+                                    <th scope="col" style="width: 32px;">Obriši</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% projectEmployees.forEach(function(employee){ %>
+                                    <tr>
+                                        <td>
+                                            <%= employee.firstName + " " + employee.lastName %>
+                                        </td>
+                                        <td>
+                                            <%= employee.numberOfHours %>
+                                        </td>
+                                        <td>
+                                            <a href="/project/employee/<%= project.id %>/<%= employee.id %>" role="button" data-role="delete" data-delete-parent="tr">
+                                                <i class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Obriši"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% })%>
+                            </tbody>
+                        </table>
+        
+                        <div class="col-md-12 line-divider"></div>
+        
+                        <h3>Artikli</h3>
+                        <table class="table stripe" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Naziv</th>
+                                    <th scope="col">Jedinica mjere</th>
+                                    <th scope="col">Ugovorena količina</th>
+                                    <th scope="col">Isporučena količina</th>
+                                    <th scope="col">Nabavna cijena</th>
+                                    <th scope="col">Prodajna cijena</th>
+                                    <th scope="col" style="width: 32px;">Obriši</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% projectItems.forEach(function(item){ %>
+                                    <tr>
+                                        <td>
+                                            <%= item.title %>
+                                        </td>
+                                        <td>
+                                            <%= item.unitOfMeasure %>
+                                        </td>
+                                        <td>
+                                            <%= item.agreedQuantity %>
+                                        </td>
+                                        <td>
+                                            <%= item.deliveredQuantity %>
+                                        </td>
+                                        <td>
+                                            <%= item.purchasePrice %>
+                                        </td>
+                                        <td>
+                                            <%= item.sellingPrice %>
+                                        </td>
+                                        <td>
+                                            <a href="/project/item/<%= project.id %>/<%= item.id %>" role="button" data-role="delete" data-delete-parent="tr">
+                                                <i class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Obriši"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% })%>
+                            </tbody>
+                        </table>
+        
+        
+                        <div class="col-md-12 line-divider"></div>
+                    </div>
+                </div>
+        
+            </div>
+        
+            <!-- Employee Modal -->
+            <div id="employeeModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+        
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Dodaj radnika</h4>
+                        </div>
+                        <div class="modal-body">
+        
+                            <form id="registerForm" class="form-horizontal" role="form" method="post" action="/project/employee/<%= project.id %>" data-parsley-trigger="keyup"
+                                data-parsley-validate>
+        
+                                <div class="form-group">
+                                    <label for="employee" class="col-md-4 control-label">Radnik:</label>
+                                    <div class="col-md-8">
+                                        <select id="employee" name="employee" class="form-control">
+                                            <% employees.forEach(function(employee){ %>
+                                                <option value="<%= employee.id %>">
+                                                    <%= employee.firstName %>
+                                                        <%= employee.lastName %>
+                                                </option>
+                                                <% })%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numberOfHours" class="col-md-4 control-label">Broj sati:</label>
+                                    <div class="col-md-8">
+                                        <input id="numberOfHours" type="text" class="form-control" name="numberOfHours" placeholder="Broj sati" required />
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-8">
+                                        <button type="submit" class="btn btn-primary">Dodaj radnika</button>
+                                    </div>
+                                </div>
+        
+                            </form>
+        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        
+                <!-- Item Modal -->
+            <div id="itemModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+            
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Dodaj artikal</h4>
+                        </div>
+                        <div class="modal-body">
+            
+                            <form id="registerForm" class="form-horizontal" role="form" method="post" action="/project/item/<%= project.id %>" data-parsley-trigger="keyup"
+                                data-parsley-validate>
+            
+                                <div class="form-group">
+                                    <label for="item" class="col-md-4 control-label">Artikal:</label>
+                                    <div class="col-md-8">
+                                        <select id="item" name="item" class="form-control">
+                                            <% items.forEach(function(item){ %>
+                                                <option value="<%= item.id %>">
+                                                    <%= item.title %>
+                                                </option>
+                                            <% })%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sellingPrice" class="col-md-4 control-label">Prodajna cijena:</label>
+                                    <div class="col-md-8">
+                                        <input id="sellingPrice" type="text" class="form-control" name="sellingPrice" placeholder="Prodajna cijena" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="agreedQuantity" class="col-md-4 control-label">Ugovorena količina:</label>
+                                    <div class="col-md-8">
+                                        <input id="agreedQuantity" type="text" class="form-control" name="agreedQuantity" placeholder="Ugovorena količina" required />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deliveredQuantity" class="col-md-4 control-label">Isporučena količina:</label>
+                                    <div class="col-md-8">
+                                        <input id="deliveredQuantity" type="text" class="form-control" name="deliveredQuantity" placeholder="Isporučena količina" required />
+                                    </div>
+                                </div>
+            
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-8">
+                                        <button type="submit" class="btn btn-primary">Dodaj artikal</button>
+                                    </div>
+                                </div>
+            
+                            </form>
+            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+
+</body>
+
+</html>

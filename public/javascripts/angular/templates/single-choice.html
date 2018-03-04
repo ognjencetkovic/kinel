@@ -1,0 +1,12 @@
+<div class="form-group" ng-class="{'selected': !ngModel.dbId}" data-id="{{ngModel.id}}">
+    <div class="col-md-12">
+        <i class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Remove" ng-click="removeElement(ngModel.id)"></i>
+        <label class="control-label">{{ngModel.text}}</label>
+    </div>
+    <div class="col-md-12">
+        <div class="radio-field" ng-repeat="option in ngModel.options track by $index">
+            <input id="single-{{ngModel.id}}-{{$index}}" value="{{option}}" type="radio" class="form-control radio" name="single-{{ngModel.id}}" ng-model="ngModel.value" />
+            <label for="single-{{ngModel.id}}-{{$index}}">{{option}}</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<html lang="en" ng-app="app">
+<head>
+
+    <% include ./partials/head %>
+
+</head>
+<body>
+    
+    <% include ./partials/sidebar %>
+    <div id="main">
+    
+        <div class="w3-teal">
+            <% include ./partials/header %>
+            
+            <div class="container">
+                <div class="row">
+        
+                    <div class="col-md-12">
+                        <form id="registerForm" class="form-horizontal" role="form" method="post" action="/employee" data-parsley-trigger="keyup" data-parsley-validate>
+                                    
+                            <div class="form-group">
+                                <label for="firstName" class="col-md-4 control-label">Ime:</label>
+                                <div class="col-md-8">
+                                    <input id="firstName" type="text" class="form-control" name="firstName" placeholder="Ime" data-parsley-trigger="change" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="col-md-4 control-label">Prezime:</label>
+                                <div class="col-md-8">
+                                    <input id="lastName" type="text" class="form-control" name="lastName" placeholder="Prezime" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-offset-4 col-md-8">
+                                    <button type="submit" class="btn btn-primary">Dodaj</button>
+                                </div>
+                            </div>
+        
+                        </form>
+                    </div>
+                </div>
+        
+            </div>
+            
+        </div>
+    
+    </div>
+
+
+
+</body>
+</html>

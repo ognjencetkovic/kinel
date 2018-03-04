@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+                <button id="sidebar-open" class="w3-button w3-teal w3-xlarge">&#9776;</button>
+            <a class="navbar-brand" href="/">K-Inel</a>
+        </div>
+        <% if (typeof user == 'object' && user) { %>
+            <div class="navbar-right hidden-xs">
+                <p class="navbar-text">Dobrodošao, <%= user.firstName + ' ' + user.lastName %><a class="navbar-link" href="/logout">Odjavi se</a></p>
+            </div>
+        <% } %>
+    </div>
+</nav>

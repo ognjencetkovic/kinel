@@ -1,0 +1,16 @@
+<div class="form-group" ng-class="{'selected': !ngModel.dbId}" data-id="{{ngModel.id}}">
+    <div class="col-md-12">
+        <i class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Remove" ng-click="removeElement(ngModel.id)"></i>
+        <label class="control-label">{{ngModel.text}}</label>
+    </div>
+    <div class="col-md-12">
+        <div class="radio-field-horizontal">
+            <input id="yes-{{$id}}" type="radio" class="form-control radio" name="yes-no-{{$id}}" value="true" ng-model="ngModel.value" />
+            <label for="yes-{{$id}}">Yes</label>
+        </div>
+        <div class="radio-field-horizontal">
+            <input id="no-{{$id}}" type="radio" class="form-control radio" name="yes-no-{{$id}}" value="false" ng-model="ngModel.value" />
+            <label for="no-{{$id}}">No</label>
+        </div>
+    </div>
+</div>

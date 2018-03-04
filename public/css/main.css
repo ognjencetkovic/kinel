@@ -1,0 +1,345 @@
+body {
+    background: #e5e5e5;
+}
+
+.panel-register, .panel-login{
+    margin-top: 50px;
+}
+
+.login-form .input-group {
+    margin-bottom: 25px;
+}
+
+.login-form .form-group {
+    margin-top:10px;
+}
+
+.line-top {
+    border-top: 1px solid#888; 
+    padding-top:15px; 
+    font-size:85%;
+}
+
+.parsley-errors-list {
+    padding: 0;
+    margin: 0;
+}
+
+.parsley-errors-list li {
+    padding: 4px 12px;
+    margin: 5px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    list-style-type: none;
+}
+
+.login-form .parsley-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+textarea { 
+    resize: vertical; 
+}
+
+.navbar-default {
+    background-color: #284375;
+    border-color: #322f96;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-default .navbar-text {
+    color: #fff;
+}
+
+.navbar-default .navbar-link {
+    color: #fff;
+    background: #5f71a7;
+    padding: 7px 14px;
+    border-radius: 3px;
+    margin-left: 20px;
+}
+
+.navbar-default .navbar-link:hover {
+    color: #fff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #e5e5e5;
+    border: none;
+}
+
+.table .glyphicon {
+    cursor: pointer;
+    top: 5px;
+}
+
+.table .glyphicon-ok {
+    cursor: default;
+    color: #94d653;
+}
+
+/* Questionnaire builder*/
+
+.builder-area form {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    background: #fff;
+}
+
+.edit-details-area {
+    background: #e5e5e5;
+}
+
+.builder-area .form-group {
+    background: #fff;
+    padding: 20px 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #929191;
+}
+
+.builder-area .form-group.selected {
+    background: #c1c5c5;
+    border: 1px solid #929191;
+    zoom: 90%;
+}
+
+.builder-area .form-group .glyphicon-remove {
+    display: none;
+}
+
+
+.builder-area .form-group.selected .glyphicon-remove {
+    padding: 7px;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.builder-area .form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.builder-area .form-horizontal .control-label {
+    text-align: left;
+    padding: 7px 0;
+}
+
+.edit-details-area .glyphicon-remove {
+    padding: 7px;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+.edit-details-area .option-input {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.component-wrapper {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    background: #fff;
+}
+
+.component-wrapper span {
+    width: 49%;
+    display: inline-block;
+    padding-left: 17px;    
+}
+
+.component-wrapper img {
+    width: 49%;
+}
+.page-divider {
+    border: 5px solid #284375;
+    border-radius: 5px;
+    margin-right: 20;
+    margin-left: 20;
+}
+
+.btn-new-qnn {
+    margin-bottom: 30px;
+}
+
+.invalid-input {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.msg-success-wrapper .alert-success {
+    border: 1px #ccc solid;
+}
+
+/* End of Questionnaire builder*/
+
+/* Questionnaire */
+
+.questionnaire-wrapper {
+    padding: 20px;
+}
+
+.questionnaire-wrapper .form-group {
+    background: #fff;
+    border-radius: 3px;
+    padding: 25px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.questionnaire-wrapper .form-group .control-label {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.questionnaire-wrapper textarea {
+    margin-bottom: 10px;
+}
+
+/* End of Questionnaire */
+
+/* Radio and Checkbox */
+.radio-field-horizontal {
+    display: inline-block;
+}
+.radio-field-horizontal label {
+    margin-right: 20px;
+}
+input[type="radio"],
+input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    position: absolute;
+    visibility: hidden;
+}
+
+input[type="radio"] ~ label,
+input[type="checkbox"] ~ label {
+    min-height: 34px;
+    position: relative;
+    padding: 7px 0 7px 30px; 
+}
+input[type="radio"] ~ label:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #cbcdcf;
+    border-radius: 50%;
+    -webkit-box-shadow:  0px -1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.5);
+}
+input[type="radio"] ~ label:after {
+    position: absolute;
+    top: 9.7px;
+    left: 3px;
+    background-color: transparent;
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    -webkit-transition: background-color 250ms linear;
+    -moz-transition: background-color 250ms linear;
+    -o-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+}
+input[type="radio"]:checked ~ label:after {
+    background-color: #0ea6bd;
+}
+input[type="checkbox"] ~ label:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #cbcdcf;
+    -webkit-box-shadow:  0px -1px 3px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.3);
+}
+input[type="checkbox"] ~ label:after {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: #0ea6bd;
+    content: "\f00c";
+    display: block;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    visibility: hidden;
+    font: normal normal normal 10px/1 FontAwesome;
+    line-height: 20px;
+    text-align: center;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: opacity 250ms linear;
+    -moz-transition: opacity 250ms linear;
+    -o-transition: opacity 250ms linear;
+    -ms-transition: opacity 250ms linear;
+    transition: opacity 250ms linear;
+}
+input[type="checkbox"]:checked ~ label:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* End of Radio and Checkbox */
+
+
+.project-actions {
+    margin-bottom: 15px;
+}
+
+.line-divider {
+    border-top: 1px solid #000;
+    margin: 20px 0;
+}
+
+.w3-button:hover {
+    background-color: inherit!important;
+}
+
+.w3-teal, .w3-hover-teal:hover {
+    color: inherit!important;
+    background-color: inherit!important;
+}
+
+.w3-button {
+    background-color: inherit!important;
+    color: #fff!important;
+    float: left;
+    margin-right: 30px;
+} 
+
+.w3-bar-block .w3-bar-item {
+    color: #000!important;
+}
+
+.w3-bar-block .glyphicon {
+    margin: 5px;
+    margin-right: 15px;
+}

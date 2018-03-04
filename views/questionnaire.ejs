@@ -1,0 +1,138 @@
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+</head>
+
+<body>
+    <% var user = user %>
+    <% include ./partials/header %>
+    
+    <div class="container" ng-controller="qnBuilderCtrl">
+        <div class="row">
+            <% if (typeof success == 'boolean' && !success) { %>
+                <div class="col-md-12">
+                    <div class="questionnaire-wrapper">
+                        <h1>
+                            <%= questionnaire.title %>
+                        </h1>
+                        <form class="form-horizontal" role="form" method="post" action="/questionnaire/<%= questionnaire.id %>">
+                            <% if (questionnaire.questions.length){ %>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="tab-home">
+                            <% questionnaire.questions.forEach(function(question){ %>
+                                <% switch (question.type) {
+                                    case 1 : %>
+
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label for="text-<%= question.id %>" class="control-label"><%= question.text %></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <textarea id="text-<%= question.id %>" rows="2" class="form-control" name="<%= question.id %>" placeholder="<%= question.value %>"></textarea>
+                                            </div>
+                                        </div>
+            
+                                        <% break;
+                                    case 2 : %>
+                                            
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label"><%= question.text %></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="radio-field-horizontal">
+                                                    <input id="yes-<%= question.id %>" type="radio" class="form-control radio" name="<%= question.id %>" value="true" />
+                                                    <label for="yes-<%= question.id %>">Yes</label>
+                                                </div>
+                                                <div class="radio-field-horizontal">
+                                                    <input id="no-<%= question.id %>" type="radio" class="form-control radio" name="<%= question.id %>" value="false" />
+                                                    <label for="no-<%= question.id %>">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <% break;
+                                    case 3 : %>
+                                        
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label"><%= question.text %></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <% question.options.split(',').forEach(function(option, index){ %>
+                                                    <div class="radio-field">
+                                                        <input id="single-<%= question.id %>-<%= index %>" value="<%= option %>" type="radio" class="form-control radio" name="<%= question.id %>" />
+                                                        <label for="single-<%= question.id %>-<%= index %>"><%= option %></label>
+                                                    </div>
+                                                <% })%>
+                                            </div>
+                                        </div>
+
+                                        <% break;
+                                    case 4 : %>
+                                            
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label class="control-label"><%= question.text %></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <% question.options.split(',').forEach(function(option, index){ %>
+                                                    <div class="checkbox-field">
+                                                        <input id="multi-<%= question.id %>-<%= index %>" value="<%= option %>" type="checkbox" class="form-control checkbox" name="<%= question.id %>" />
+                                                        <label for="multi-<%= question.id %>-<%= index %>"><%= option %></label>
+                                                    </div>
+                                                <% })%>
+                                            </div>
+                                        </div>
+
+                                        <% break;
+                                    
+                                    case 5 : %>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="tab-<%= question.id %>">
+
+                                        <% break;
+                                } %>
+                            <% })%>
+                                </div>
+                            </div>
+                            <nav aria-label="Page navigation" role="tablist">
+                                <ul class="pagination nav nav-tabs">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab-home" aria-controls="tab-home" role="tab" data-toggle="tab">1</a>
+                                    </li>
+                                    <% var pageNum = 2 %>
+                                    <% questionnaire.questions.forEach(function(question){ %>
+                                        <% if (question.type === 5){ %>
+                                        <li>
+                                            <a href="#tab-<%= question.id %>" aria-controls="tab-<%= question.id %>" role="tab" data-toggle="tab"><%= pageNum %></a>
+                                        </li>
+                                        <% pageNum++ %>
+                                    <% }})%>
+                                </ul>
+                            </nav>
+                            
+                            <div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        <% }%>
+                        </form>
+
+                    </div>
+                </div>
+            <% } %>
+            <% if (typeof success == 'boolean' && success) { %>
+                <div class="col-md-12 msg-success-wrapper">
+                    <div class="alert alert-success" role="alert"> 
+                        <strong>Questionnaire completed!</strong>
+                        <a href="/questionnaire">Click here</a> to see all questionnaires.
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+
+</html>
